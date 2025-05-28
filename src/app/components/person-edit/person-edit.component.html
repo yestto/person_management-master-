@@ -1,0 +1,40 @@
+<div class="card">
+      <div class="card-header">Edit Person</div>
+      <div class="card-body">
+        <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" formControlName="name" class="form-control" [class.is-invalid]="personForm.get('name')?.invalid && personForm.get('name')?.touched">
+            <div *ngIf="personForm.get('name')?.invalid && personForm.get('name')?.touched" class="invalid-feedback">
+              Name is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input id="age" formControlName="age" type="number" class="form-control" [class.is-invalid]="personForm.get('age')?.invalid && personForm.get('age')?.touched">
+            <div *ngIf="personForm.get('age')?.invalid && personForm.get('age')?.touched" class="invalid-feedback">
+              Age must be between 1 and 120.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" formControlName="gender" class="form-select" [class.is-invalid]="personForm.get('gender')?.invalid && personForm.get('gender')?.touched">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <div *ngIf="personForm.get('gender')?.invalid && personForm.get('gender')?.touched" class="invalid-feedback">
+              Gender is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input id="mobile" formControlName="mobile" class="form-control" [class.is-invalid]="personForm.get('mobile')?.invalid && personForm.get('mobile')?.touched">
+            <div *ngIf="personForm.get('mobile')?.invalid && personForm.get('mobile')?.touched" class="invalid-feedback">
+              Mobile number must be 10 digits.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="personForm.invalid">Save</button>
+          <button type="button" class="btn btn-secondary ms-2" (click)="goBack()">Cancel</button>
+        </form>
+      </div>
+    </div>

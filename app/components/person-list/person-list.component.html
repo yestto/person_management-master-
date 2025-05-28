@@ -1,0 +1,35 @@
+<div class="card">
+      <div class="card-header">People List</div>
+      
+      <div>
+        <a [routerLink]="['/create']" class="btn btn-success mt-2 mb-2">Create Person</a>
+      </div>
+
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Mobile</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let person of people">
+              <td>{{ person._id }}</td>
+              <td>{{ person.name }}</td>
+              <td>{{ person.age }}</td>
+              <td>{{ person.gender }}</td>
+              <td>{{ person.mobile }}</td>
+              <td>
+                <a [routerLink]="['/edit', person._id]" class="btn btn-sm btn-primary me-2">Edit</a>
+                <a [routerLink]="['/delete', person._id]" class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
